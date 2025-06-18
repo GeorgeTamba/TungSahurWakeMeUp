@@ -12,13 +12,16 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
     private Rigidbody2D rb;
+    private bool wasGrounded;
     private bool isGrounded;
+    private Vector3 originalScale;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        originalScale = transform.localScale; // Simpan scale asli saat Start
     }
-    private bool wasGrounded;
 
     void Update()
     {
@@ -36,9 +39,9 @@ public class PlayerMovement : MonoBehaviour
         }
         // Flip character based on direction
         if (moveInput > 0)
-            transform.localScale = new Vector3(1.807516f, 1.807516f, 1.807516f);  // Menghadap kanan
+            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);  // Menghadap kanan
         else if (moveInput < 0)
-            transform.localScale = new Vector3(-1.807516f, 1.807516f, 1.807516f);  // Menghadap kiri
+            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // Menghadap kiri
 
         // Jump
         if (Input.GetButtonDown("Jump") && isGrounded)
