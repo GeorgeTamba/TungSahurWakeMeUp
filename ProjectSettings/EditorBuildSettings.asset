@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: f812f5187b9a88240a48fb1fb672cc05
   - enabled: 1
+    path: Assets/Scenes/Level Kampung.unity
+    guid: 6195a1f1bae575742b5fa6b6a8b8bcd7
+  - enabled: 1
     path: Assets/Scenes/Kota.unity
     guid: 086b144b8482cb4468fefdb8aef69174
   m_configObjects: {}

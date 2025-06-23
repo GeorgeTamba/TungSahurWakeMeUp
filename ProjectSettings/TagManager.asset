@@ -7,6 +7,8 @@ TagManager:
   - Bedug
   - Kentongan
   - Rebana
+  - Enemy
+  - Trap
   layers:
   - Default
   - TransparentFX

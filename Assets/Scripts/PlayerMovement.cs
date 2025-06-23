@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         wasGrounded = isGrounded; // Simpan status grounded untuk pengecekan di frame berikutnya
     }
 
-    public void OnLanding ()
+    public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
     }
@@ -63,6 +63,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Trap"))
+        {
+            // Player dies — for now, just reload the scene
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
