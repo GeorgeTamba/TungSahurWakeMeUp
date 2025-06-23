@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bedug
+  - Kentongan
+  - Rebana
   layers:
   - Default
   - TransparentFX
@@ -73,4 +76,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3532172779
+    locked: 0
+  - name: UI
+    uniqueID: 4012096499
     locked: 0
