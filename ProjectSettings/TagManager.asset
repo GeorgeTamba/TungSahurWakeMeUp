@@ -9,6 +9,7 @@ TagManager:
   - Rebana
   - Enemy
   - Trap
+  - FallZone
   layers:
   - Default
   - TransparentFX

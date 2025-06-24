@@ -70,8 +70,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Trap"))
         {
-            // Player dies — for now, just reload the scene
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+            GetComponent<PlayerHealthManager>().TakeDamage(); // Ganti dari reload scene jadi sistem nyawa
         }
     }
 }
