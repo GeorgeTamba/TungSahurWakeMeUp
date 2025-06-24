@@ -10,10 +10,14 @@ public class StompDetector : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            // Destroy the enemy
-            Destroy(other.gameObject);
+            // Call the enemy's Die() function
+            EnemyDeath deathScript = other.GetComponent<EnemyDeath>();
+            if (deathScript != null)
+            {
+                deathScript.Die();
+            }
 
-            // Make the player bounce
+            // Bounce the player up
             Rigidbody2D playerRb = GetComponentInParent<Rigidbody2D>();
             playerRb.velocity = new Vector2(playerRb.velocity.x, bounceForce);
         }

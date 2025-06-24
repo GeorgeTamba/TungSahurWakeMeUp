@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 11866997}
   - component: {fileID: 11866996}
   - component: {fileID: 11866999}
+  - component: {fileID: 11867000}
   m_Layer: 0
   m_Name: Monster Guling (2)
   m_TagString: Enemy
@@ -402,6 +403,19 @@ MonoBehaviour:
   patrolDistance: 6
   patrolSpeed: 3
   startMovingLeft: 0
+--- !u!114 &11867000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11866993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &19922387
 GameObject:
   m_ObjectHideFlags: 0
@@ -5742,6 +5756,7 @@ GameObject:
   - component: {fileID: 287123382}
   - component: {fileID: 287123385}
   - component: {fileID: 287123384}
+  - component: {fileID: 287123386}
   m_Layer: 0
   m_Name: Penyihir Tidur (3)
   m_TagString: Enemy
@@ -5925,6 +5940,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &287123386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287123379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &289591831
 GameObject:
   m_ObjectHideFlags: 0
@@ -10849,7 +10877,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.8187733, y: 1.7031599, z: -10}
+  m_LocalPosition: {x: 7.783086, y: 0.51690006, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17215,6 +17243,7 @@ GameObject:
   - component: {fileID: 848665965}
   - component: {fileID: 848665968}
   - component: {fileID: 848665967}
+  - component: {fileID: 848665969}
   m_Layer: 0
   m_Name: Penyihir Tidur (2)
   m_TagString: Enemy
@@ -17398,6 +17427,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &848665969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848665962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &849721713
 GameObject:
   m_ObjectHideFlags: 0
@@ -21551,6 +21593,7 @@ GameObject:
   - component: {fileID: 1044220818}
   - component: {fileID: 1044220820}
   - component: {fileID: 1044220819}
+  - component: {fileID: 1044220821}
   m_Layer: 0
   m_Name: Monster Guling (1)
   m_TagString: Enemy
@@ -21718,6 +21761,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.6533732, y: 7.1181326}
   m_EdgeRadius: 0
+--- !u!114 &1044220821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044220815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &1052085812
 GameObject:
   m_ObjectHideFlags: 0
@@ -28150,6 +28206,7 @@ GameObject:
   - component: {fileID: 1396649265}
   - component: {fileID: 1396649264}
   - component: {fileID: 1396649267}
+  - component: {fileID: 1396649268}
   m_Layer: 0
   m_Name: Monster Guling (5)
   m_TagString: Enemy
@@ -28332,6 +28389,19 @@ MonoBehaviour:
   patrolDistance: 6
   patrolSpeed: 3
   startMovingLeft: 0
+--- !u!114 &1396649268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396649261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &1397567833
 GameObject:
   m_ObjectHideFlags: 0
@@ -28942,6 +29012,7 @@ GameObject:
   - component: {fileID: 1419725410}
   - component: {fileID: 1419725409}
   - component: {fileID: 1419725412}
+  - component: {fileID: 1419725413}
   m_Layer: 0
   m_Name: Monster Guling (3)
   m_TagString: Enemy
@@ -29124,6 +29195,19 @@ MonoBehaviour:
   patrolDistance: 4
   patrolSpeed: 3
   startMovingLeft: 1
+--- !u!114 &1419725413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419725406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &1420481586
 GameObject:
   m_ObjectHideFlags: 0
@@ -29558,6 +29642,7 @@ GameObject:
   - component: {fileID: 1444293540}
   - component: {fileID: 1444293543}
   - component: {fileID: 1444293542}
+  - component: {fileID: 1444293544}
   m_Layer: 0
   m_Name: Penyihir Tidur (4)
   m_TagString: Enemy
@@ -29741,6 +29826,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1444293544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444293537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &1445288402
 GameObject:
   m_ObjectHideFlags: 0
@@ -32323,7 +32421,7 @@ Transform:
   m_GameObject: {fileID: 1582747562}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.82, y: 3.11, z: -10}
+  m_LocalPosition: {x: -4.7, y: -8.66, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33187,6 +33285,7 @@ GameObject:
   - component: {fileID: 1635167143}
   - component: {fileID: 1635167146}
   - component: {fileID: 1635167145}
+  - component: {fileID: 1635167147}
   m_Layer: 0
   m_Name: Penyihir Tidur (1)
   m_TagString: Enemy
@@ -33370,6 +33469,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1635167147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635167140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &1636341903
 GameObject:
   m_ObjectHideFlags: 0
@@ -33728,6 +33840,7 @@ GameObject:
   - component: {fileID: 1642967198}
   - component: {fileID: 1642967197}
   - component: {fileID: 1642967199}
+  - component: {fileID: 1642967200}
   m_Layer: 0
   m_Name: Monster Bantal (1)
   m_TagString: Enemy
@@ -33910,6 +34023,19 @@ MonoBehaviour:
   patrolDistance: 3
   patrolSpeed: 3
   startMovingLeft: 1
+--- !u!114 &1642967200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642967193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &1644123771
 GameObject:
   m_ObjectHideFlags: 0
@@ -37891,7 +38017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: -4.06, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -37900,14 +38026,14 @@ MonoBehaviour:
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
-  m_ScreenY: 0.85
+  m_ScreenY: 0.5
   m_CameraDistance: 10
   m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 2
+  m_DeadZoneHeight: 0.2
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 2
+  m_SoftZoneHeight: 1.07
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -38524,6 +38650,7 @@ GameObject:
   - component: {fileID: 1821247955}
   - component: {fileID: 1821247954}
   - component: {fileID: 1821247957}
+  - component: {fileID: 1821247958}
   m_Layer: 0
   m_Name: Monster Bantal (2)
   m_TagString: Enemy
@@ -38706,6 +38833,19 @@ MonoBehaviour:
   patrolDistance: 3
   patrolSpeed: 3
   startMovingLeft: 1
+--- !u!114 &1821247958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821247951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &1822235235
 GameObject:
   m_ObjectHideFlags: 0
@@ -40985,10 +41125,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -37.026054, y: 24.85114}
-      - {x: -37.04595, y: 1.1785775}
-      - {x: 463.91455, y: 0.1511805}
-      - {x: 464.07727, y: 24.23541}
+    - - {x: -37.11269, y: 31.191534}
+      - {x: -37.04595, y: 3.646821}
+      - {x: 463.93777, y: 3.5386736}
+      - {x: 463.99542, y: 31.180239}
   m_UseDelaunayMesh: 0
 --- !u!4 &1923124397
 Transform:
@@ -41019,6 +41159,7 @@ GameObject:
   - component: {fileID: 1928317932}
   - component: {fileID: 1928317931}
   - component: {fileID: 1928317934}
+  - component: {fileID: 1928317935}
   m_Layer: 0
   m_Name: Monster Guling (4)
   m_TagString: Enemy
@@ -41201,6 +41342,19 @@ MonoBehaviour:
   patrolDistance: 4
   patrolSpeed: 3
   startMovingLeft: 1
+--- !u!114 &1928317935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928317928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &1930972122
 GameObject:
   m_ObjectHideFlags: 0
@@ -41428,7 +41582,7 @@ Transform:
   m_GameObject: {fileID: 1937160045}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.82, y: -3.89, z: 0}
+  m_LocalPosition: {x: -4.7, y: -4.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43183,6 +43337,7 @@ GameObject:
   - component: {fileID: 2020702896}
   - component: {fileID: 2020702899}
   - component: {fileID: 2020702898}
+  - component: {fileID: 2020702900}
   m_Layer: 0
   m_Name: Penyihir Tidur (5)
   m_TagString: Enemy
@@ -43366,6 +43521,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2020702900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020702893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52bc09b52b77f74f89dfd6262dbf68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDelay: 0.5
 --- !u!1 &2022529036
 GameObject:
   m_ObjectHideFlags: 0
