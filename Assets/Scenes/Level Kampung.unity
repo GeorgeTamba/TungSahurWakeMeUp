@@ -13685,7 +13685,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9c5d71c2bacfc9d40861ade5ccd2d03e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2a77dabc676c3d34ba26d732b426492a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -13783,7 +13783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7158fa7966e0e4aaf3859ae9cb79df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnClip: {fileID: 8300000, guid: 9c5d71c2bacfc9d40861ade5ccd2d03e, type: 3}
+  spawnClip: {fileID: 8300000, guid: 2a77dabc676c3d34ba26d732b426492a, type: 3}
   volume: 100
 --- !u!1 &564075123
 GameObject:
@@ -16871,7 +16871,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 364394059b6def0428bfdbc0beac4f7b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -22072,6 +22072,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &899067941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899067942}
+  m_Layer: 0
+  m_Name: AudioPreviewer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &899067942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899067941}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902434333
 GameObject:
   m_ObjectHideFlags: 0
@@ -32178,6 +32209,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1494120400}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1311204387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1311204388}
+  m_Layer: 0
+  m_Name: AudioPreviewer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1311204388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311204387}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1317782370
 GameObject:
@@ -48742,6 +48804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isControlEnabled: 1
+  jumpSoundVolume: 0.5
   moveSpeed: 8
   jumpForce: 36
   groundCheck: {fileID: 475633316}
@@ -48780,8 +48843,8 @@ MonoBehaviour:
   - {fileID: 1697029720}
   - {fileID: 680863360}
   playerRenderer: {fileID: 1743782234}
-  deathSound: {fileID: 8300000, guid: 7415819d429ece447bf1d8989d90f39a, type: 3}
-  hitSound: {fileID: 8300000, guid: 480593d62477ff04680ea0fe3d1274d4, type: 3}
+  deathSound: {fileID: 8300000, guid: e4e2a80d98d9d0848b1d952453816ed2, type: 3}
+  hitSound: {fileID: 8300000, guid: 91962c52aa01d53469a3c688c53456de, type: 3}
   bgmSource: {fileID: 2077505196}
 --- !u!82 &1937160052
 AudioSource:
@@ -48793,7 +48856,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 480593d62477ff04680ea0fe3d1274d4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 91962c52aa01d53469a3c688c53456de, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -54439,3 +54502,5 @@ SceneRoots:
   - {fileID: 791995747}
   - {fileID: 926770297}
   - {fileID: 338279011}
+  - {fileID: 899067942}
+  - {fileID: 1311204388}
