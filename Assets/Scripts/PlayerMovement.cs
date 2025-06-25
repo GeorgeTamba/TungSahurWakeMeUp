@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [HideInInspector]
     public bool isControlEnabled = true;
+    [Range(0f, 1f)]
+    public float jumpSoundVolume = 0.3f;
 
     public float moveSpeed = 8f;
     public float jumpForce = 16f;
@@ -61,11 +63,12 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsJumping", true);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
-            // Play jump sound
+            // Play jump sound with temporary volume adjustment
             if (jumpSound != null && audioSource != null)
             {
-                audioSource.PlayOneShot(jumpSound);
+                audioSource.PlayOneShot(jumpSound, jumpSoundVolume);
             }
+
         }
         wasGrounded = isGrounded; // Simpan status grounded untuk pengecekan di frame berikutnya
     }
