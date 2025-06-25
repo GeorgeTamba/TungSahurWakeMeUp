@@ -7,11 +7,15 @@ public class EnemyThrower : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform ballSpawnPoint;
 
+    public AudioClip throwSound;
+    private AudioSource audioSource;
+
     private Animator animator;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ThrowBall()
@@ -25,6 +29,12 @@ public class EnemyThrower : MonoBehaviour
 
         // Set ball direction based on enemy facing
         proj.SetDirection(isFacingLeft);
+
+        // Play throw sound exactly at the moment ball spawns
+        if (throwSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(throwSound);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

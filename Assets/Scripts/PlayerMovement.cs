@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [HideInInspector]
+    public bool isControlEnabled = true;
+
     public float moveSpeed = 8f;
     public float jumpForce = 16f;
     public Transform groundCheck;
@@ -16,6 +19,12 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private Vector3 originalScale;
 
+    public AudioClip jumpSound;
+    public AudioClip[] footstepSounds;
+    public AudioSource audioSource;
+    public float minPitch = 0.95f;
+    public float maxPitch = 1.05f;
+
 
     void Start()
     {
@@ -25,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!isControlEnabled)
+            return;
+
         // Horizontal Movement
         float moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
@@ -48,6 +60,12 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsJumping", true);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+            // Play jump sound
+            if (jumpSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(jumpSound);
+            }
         }
         wasGrounded = isGrounded; // Simpan status grounded untuk pengecekan di frame berikutnya
     }
@@ -71,6 +89,39 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Trap"))
         {
             GetComponent<PlayerHealthManager>().TakeDamage(); // Ganti dari reload scene jadi sistem nyawa
+        }
+    }
+
+    public void PlayFootstepSound()
+    {
+        if (footstepSounds.Length == 0 || audioSource == null)
+            return;
+
+        // Pick a random footstep clip
+        AudioClip clip = footstepSounds[Random.Range(0, footstepSounds.Length)];
+
+        // Randomize pitch slightly
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+
+        // Play the sound
+        audioSource.PlayOneShot(clip);
+    }
+    public void StartAutoRun()
+    {
+        StartCoroutine(AutoRunToRight());
+    }
+
+    private IEnumerator AutoRunToRight()
+    {
+        while (true)
+        {
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            animator.SetFloat("Speed", Mathf.Abs(moveSpeed));
+
+            // Optionally: prevent jumping animation or other states
+            animator.SetBool("IsJumping", false);
+
+            yield return null;
         }
     }
 }
