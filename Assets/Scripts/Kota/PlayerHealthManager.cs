@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealthManager : MonoBehaviour
 {
@@ -10,37 +10,40 @@ public class PlayerHealthManager : MonoBehaviour
     private int currentHealth;
     private bool isInvincible = false;
 
-    [Header("Invincibility Settings")]
     public float invincibilityDuration = 2f;
 
     [Header("UI Settings")]
     public Sprite heartFull;
     public Sprite heartEmpty;
-    public Image[] heartImages; // Harus diisi 3 UI Image di Inspector
+    public Image[] heartImages;
 
-    [Header("Sprite Renderer")]
+    [Header("Visuals")]
     public SpriteRenderer playerRenderer;
+    private Animator animator;
 
-    [Header("Audio")]
-    public AudioClip hitSound;
-    private AudioSource audioSource;
-
+    [Header("Respawn Settings")]
     private Vector3 checkpointPosition;
     private Rigidbody2D rb;
     private bool isRespawning = false;
-    private Animator animator;
+    private bool isDead = false;
+
+    private float lastXDirection = 1f;
+
+    [Header("Audio")]
+    public AudioClip deathSound;
+    public AudioClip hitSound; // Tambahkan ini
+    public AudioSource bgmSource;
 
     void Start()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
-        checkpointPosition = transform.position; // Default checkpoint di posisi awal
-        audioSource = GetComponent<AudioSource>();
+        checkpointPosition = transform.position;
 
-        // Matikan SpriteRenderer capsule player
-        SpriteRenderer selfRenderer = GetComponent<SpriteRenderer>();
-        if (selfRenderer != null)
-            selfRenderer.enabled = false;
+        // Matikan SpriteRenderer capsule (bukan character)
+        SpriteRenderer capsuleRenderer = GetComponent<SpriteRenderer>();
+        if (capsuleRenderer != null)
+            capsuleRenderer.enabled = false;
 
         animator = GetComponentInChildren<Animator>();
         UpdateHeartsUI();
@@ -48,47 +51,44 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (isInvincible || currentHealth <= 0)
-            return;
+        if (isInvincible || currentHealth <= 0 || isDead) return;
+
+        if (Mathf.Abs(rb.velocity.x) > 0.01f)
+            lastXDirection = Mathf.Sign(rb.velocity.x);
 
         currentHealth--;
-
-        // Mainkan suara terkena hit
-        if (hitSound != null && audioSource != null)
-            audioSource.PlayOneShot(hitSound);
-
         UpdateHeartsUI();
 
+        //  Tambahkan ini: mainkan hit sound
+        if (hitSound != null)
+            AudioSource.PlayClipAtPoint(hitSound, transform.position);
+
         if (currentHealth <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+            StartCoroutine(DeathAnimationAndRestart());
         else
-        {
             StartCoroutine(InvincibilityFlash());
-        }
     }
+
 
     public void FallToDeath()
     {
-        if (isRespawning) return;
+        if (isRespawning || isDead) return;
+
+        if (Mathf.Abs(rb.velocity.x) > 0.01f)
+            lastXDirection = Mathf.Sign(rb.velocity.x);
 
         currentHealth--;
-
-        // Mainkan suara terkena hit (jatuh)
-        if (hitSound != null && audioSource != null)
-            audioSource.PlayOneShot(hitSound);
-
         UpdateHeartsUI();
 
         if (currentHealth <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+            StartCoroutine(DeathAnimationAndRestart());
         else
-        {
             StartCoroutine(RespawnAtCheckpoint());
-        }
+    }
+
+    public void SetCheckpoint(Vector3 newCheckpoint)
+    {
+        checkpointPosition = newCheckpoint;
     }
 
     private IEnumerator InvincibilityFlash()
@@ -96,7 +96,7 @@ public class PlayerHealthManager : MonoBehaviour
         isInvincible = true;
         float flashSpeed = 0.1f;
 
-        for (float i = 0; i < invincibilityDuration; i += flashSpeed * 2)
+        for (float t = 0; t < invincibilityDuration; t += flashSpeed * 2)
         {
             playerRenderer.enabled = false;
             yield return new WaitForSeconds(flashSpeed);
@@ -111,13 +111,9 @@ public class PlayerHealthManager : MonoBehaviour
     {
         isRespawning = true;
 
-        // Nonaktifkan movement
         GetComponent<PlayerMovement>().enabled = false;
-
-        // Pindahkan ke checkpoint
         transform.position = checkpointPosition;
 
-        // Reset animasi
         if (animator != null)
         {
             animator.SetBool("IsJumping", false);
@@ -125,45 +121,62 @@ public class PlayerHealthManager : MonoBehaviour
             animator.Play("Idle");
         }
 
-        // Freeze physics
         rb.velocity = Vector2.zero;
         rb.isKinematic = true;
 
-        // Mulai blinking seketika
         StartCoroutine(InvincibilityFlash());
 
-        // Tunggu 1 detik di tempat
         yield return new WaitForSeconds(1f);
 
-        // Unfreeze dan aktifkan movement
         rb.isKinematic = false;
         GetComponent<PlayerMovement>().enabled = true;
-
         isRespawning = false;
+    }
+
+    private IEnumerator DeathAnimationAndRestart()
+    {
+        isDead = true;
+
+        // Disable collider & movement
+        foreach (var col in GetComponentsInChildren<Collider2D>())
+            col.enabled = false;
+
+        PlayerMovement movement = GetComponent<PlayerMovement>();
+        if (movement != null) movement.enabled = false;
+
+        if (animator != null)
+            animator.Play("Player_Dead");
+
+        yield return new WaitForSeconds(0.15f);
+        if (animator != null) animator.enabled = false;
+
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.gravityScale = 1.5f;
+        rb.freezeRotation = false;
+
+        rb.velocity = new Vector2(0, 5f); // Lompat dulu
+        yield return new WaitForSeconds(0.25f);
+
+        rb.velocity = new Vector2(lastXDirection * 2f, -3f); // Jatuh dan geser
+        rb.AddTorque(200f); // Muter
+
+        // Stop BGM
+        if (bgmSource != null) bgmSource.Stop();
+
+        // Play death SFX
+        if (deathSound != null)
+            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+
+        yield return new WaitForSeconds(5f); // Waktu deathSound
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void UpdateHeartsUI()
     {
         for (int i = 0; i < heartImages.Length; i++)
         {
-            if (i < currentHealth)
-                heartImages[i].sprite = heartFull;
-            else
-                heartImages[i].sprite = heartEmpty;
-        }
-    }
-
-    public void SetCheckpoint(Vector3 newCheckpoint)
-    {
-        checkpointPosition = newCheckpoint;
-    }
-
-    private void SetAllSpriteRenderers(bool state)
-    {
-        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer sr in renderers)
-        {
-            sr.enabled = state;
+            heartImages[i].sprite = i < currentHealth ? heartFull : heartEmpty;
         }
     }
 }
