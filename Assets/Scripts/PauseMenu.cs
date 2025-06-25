@@ -1,11 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pausePanel;
+    public AudioClip pauseClickSound;
 
     private bool isPaused = false;
+    private AudioSource audioSource;
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -14,23 +22,32 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        // Keyboard pause toggle
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
                 ResumeGame();
             else
-                PauseGame();
+                StartCoroutine(PlayClickThenPause());
         }
     }
 
     public void PauseGame()
     {
+        StartCoroutine(PlayClickThenPause());
+    }
+
+    private IEnumerator PlayClickThenPause()
+    {
+        if (pauseClickSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(pauseClickSound);
+            yield return new WaitForSecondsRealtime(pauseClickSound.length);
+        }
+
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
 
-        // Optional: Pause audio
         AudioListener.pause = true;
     }
 
@@ -39,8 +56,6 @@ public class PauseMenu : MonoBehaviour
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-
-        // Optional: Resume audio
         AudioListener.pause = false;
     }
 

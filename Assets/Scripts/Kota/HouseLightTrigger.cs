@@ -1,9 +1,17 @@
 using UnityEngine;
 using System.Collections;
+
 public class HouseLightTrigger : MonoBehaviour
 {
     public Sprite houseLightOn;
     [SerializeField] private GameObject panelToShow;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip finishSound;
+    private AudioSource audioSource;
+
+    [Header("Background Music")]
+    public BGMPlayer bgmPlayer; // Drag dari scene
 
     private SpriteRenderer spriteRenderer;
     private bool hasTriggered = false;
@@ -13,7 +21,15 @@ public class HouseLightTrigger : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (panelToShow != null)
-            panelToShow.SetActive(false); // Hide panel at start, even if it's inactive in editor
+            panelToShow.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.spatialBlend = 0f;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,6 +50,16 @@ public class HouseLightTrigger : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         if (panelToShow != null)
-            panelToShow.SetActive(true); // Show the panel even if it's inactive at start
+        {
+            panelToShow.SetActive(true);
+
+            // Hentikan BGM
+            if (bgmPlayer != null)
+                bgmPlayer.StopBGM();
+
+            // Mainkan suara panel finish
+            if (finishSound != null)
+                audioSource.PlayOneShot(finishSound);
+        }
     }
 }
