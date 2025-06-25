@@ -24,10 +24,18 @@ public class BallProjectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Reload the current scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // Call player's TakeDamage() method
+            PlayerHealthManager health = other.GetComponent<PlayerHealthManager>();
+            if (health != null)
+            {
+                health.TakeDamage();
+            }
+
+            // Optionally destroy the projectile after hitting player
+            Destroy(gameObject);
         }
     }
+
 
     public void SetDirection(bool isFacingLeft)
     {
