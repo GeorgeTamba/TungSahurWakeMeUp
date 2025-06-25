@@ -16631,7 +16631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   houseLightOn: {fileID: 21300000, guid: de3b6ba75f7973e46afba84f9bf1cdc7, type: 3}
   panelToShow: {fileID: 590261457}
-  finishSound: {fileID: 8300000, guid: a2717480475f192439f445ccb31ed5fd, type: 3}
+  finishSound: {fileID: 8300000, guid: f9d6989618202a74b80833bf67f1e141, type: 3}
   bgmPlayer: {fileID: 1595161903}
 --- !u!61 &1033474527
 BoxCollider2D:
@@ -18364,6 +18364,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1130721293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130721294}
+  m_Layer: 0
+  m_Name: AudioPreviewer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1130721294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130721293}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1141756531
 GameObject:
   m_ObjectHideFlags: 0
@@ -24544,7 +24575,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 413d392f24ac8734abfb1d12ea458645, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.45
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -26561,7 +26592,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 364394059b6def0428bfdbc0beac4f7b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -28705,6 +28736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isControlEnabled: 1
+  jumpSoundVolume: 0.25
   moveSpeed: 8
   jumpForce: 36
   groundCheck: {fileID: 475633316}
@@ -31300,3 +31332,4 @@ SceneRoots:
   - {fileID: 2000625687}
   - {fileID: 578960434}
   - {fileID: 1917102744}
+  - {fileID: 1130721294}
