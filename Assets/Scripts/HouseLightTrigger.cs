@@ -11,7 +11,7 @@ public class HouseLightTrigger : MonoBehaviour
     private AudioSource audioSource;
 
     [Header("Background Music")]
-    public BGMPlayer bgmPlayer; // Drag dari scene
+    public BGMPlayer bgmPlayer; 
 
     private SpriteRenderer spriteRenderer;
     private bool hasTriggered = false;
@@ -53,11 +53,9 @@ public class HouseLightTrigger : MonoBehaviour
         {
             panelToShow.SetActive(true);
 
-            // Hentikan BGM
             if (bgmPlayer != null)
                 bgmPlayer.StopBGM();
 
-            // Mainkan suara panel finish
             if (finishSound != null)
                 audioSource.PlayOneShot(finishSound);
         }

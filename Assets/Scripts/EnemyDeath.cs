@@ -8,7 +8,7 @@ public class EnemyDeath : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
 
-    public float deathDelay = 0.5f;  // Time before destroying the enemy
+    public float deathDelay = 0.5f;  
 
     void Start()
     {
@@ -19,10 +19,8 @@ public class EnemyDeath : MonoBehaviour
 
     public void Die()
     {
-        // Trigger death animation
         animator.SetBool("isDead", true);
 
-        // Disable movement and collision
         if (rb != null)
         {
             rb.velocity = Vector2.zero;
@@ -32,7 +30,6 @@ public class EnemyDeath : MonoBehaviour
         if (col != null)
             col.enabled = false;
 
-        // Destroy after delay
         Destroy(gameObject, deathDelay);
     }
 }

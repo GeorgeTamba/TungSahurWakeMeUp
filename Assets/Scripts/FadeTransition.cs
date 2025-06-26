@@ -16,7 +16,6 @@ public class FadeTransition : MonoBehaviour
 
     IEnumerator FadeOutAndLoad(string sceneName)
     {
-        // Fade to black
         float t = 0;
         Color panelColor = fadePanel.color;
         while (t < fadeDuration)
@@ -27,7 +26,6 @@ public class FadeTransition : MonoBehaviour
             yield return null;
         }
 
-        // Load next scene
         SceneManager.LoadScene(sceneName);
     }
 }

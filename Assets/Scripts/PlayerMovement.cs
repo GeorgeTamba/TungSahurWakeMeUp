@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        originalScale = transform.localScale; // Simpan scale asli saat Start
+        originalScale = transform.localScale; // Save original scale for flipping
     }
 
     void Update()
@@ -53,9 +53,9 @@ public class PlayerMovement : MonoBehaviour
         }
         // Flip character based on direction
         if (moveInput > 0)
-            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);  // Menghadap kanan
+            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);  // Face right
         else if (moveInput < 0)
-            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // Menghadap kiri
+            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // Face left
 
         // Jump
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -70,14 +70,14 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-        wasGrounded = isGrounded; // Simpan status grounded untuk pengecekan di frame berikutnya
+        wasGrounded = isGrounded; // Save current grounded state for next frame
     }
 
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
     }
-    // Draw ground check gizmo
+
     void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Trap"))
         {
-            GetComponent<PlayerHealthManager>().TakeDamage(); // Ganti dari reload scene jadi sistem nyawa
+            GetComponent<PlayerHealthManager>().TakeDamage(); 
         }
     }
 
@@ -103,10 +103,9 @@ public class PlayerMovement : MonoBehaviour
         // Pick a random footstep clip
         AudioClip clip = footstepSounds[Random.Range(0, footstepSounds.Length)];
 
-        // Randomize pitch slightly
+        // Randomize pitch
         audioSource.pitch = Random.Range(minPitch, maxPitch);
 
-        // Play the sound
         audioSource.PlayOneShot(clip);
     }
     public void StartAutoRun()
@@ -121,7 +120,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             animator.SetFloat("Speed", Mathf.Abs(moveSpeed));
 
-            // Optionally: prevent jumping animation or other states
             animator.SetBool("IsJumping", false);
 
             yield return null;

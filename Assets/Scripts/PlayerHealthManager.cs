@@ -31,7 +31,7 @@ public class PlayerHealthManager : MonoBehaviour
 
     [Header("Audio")]
     public AudioClip deathSound;
-    public AudioClip hitSound; // Tambahkan ini
+    public AudioClip hitSound; 
     public AudioSource bgmSource;
 
     void Start()
@@ -40,7 +40,6 @@ public class PlayerHealthManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         checkpointPosition = transform.position;
 
-        // Matikan SpriteRenderer capsule (bukan character)
         SpriteRenderer capsuleRenderer = GetComponent<SpriteRenderer>();
         if (capsuleRenderer != null)
             capsuleRenderer.enabled = false;
@@ -59,7 +58,6 @@ public class PlayerHealthManager : MonoBehaviour
         currentHealth--;
         UpdateHeartsUI();
 
-        //  Tambahkan ini: mainkan hit sound
         if (hitSound != null)
             AudioSource.PlayClipAtPoint(hitSound, transform.position);
 
@@ -137,7 +135,6 @@ public class PlayerHealthManager : MonoBehaviour
     {
         isDead = true;
 
-        // Disable collider & movement
         foreach (var col in GetComponentsInChildren<Collider2D>())
             col.enabled = false;
 
@@ -154,20 +151,18 @@ public class PlayerHealthManager : MonoBehaviour
         rb.gravityScale = 1.5f;
         rb.freezeRotation = false;
 
-        rb.velocity = new Vector2(0, 5f); // Lompat dulu
+        rb.velocity = new Vector2(0, 5f); 
         yield return new WaitForSeconds(0.25f);
 
-        rb.velocity = new Vector2(lastXDirection * 2f, -3f); // Jatuh dan geser
-        rb.AddTorque(200f); // Muter
+        rb.velocity = new Vector2(lastXDirection * 2f, -3f); 
+        rb.AddTorque(200f); 
 
-        // Stop BGM
         if (bgmSource != null) bgmSource.Stop();
 
-        // Play death SFX
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position);
 
-        yield return new WaitForSeconds(5f); // Waktu deathSound
+        yield return new WaitForSeconds(5f); 
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

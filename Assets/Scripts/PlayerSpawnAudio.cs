@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerSpawnAudio : MonoBehaviour
 {
     public AudioClip spawnClip;
-    public float volume = 1f; // bisa diatur besar kecilnya
+    public float volume = 1f; 
 
     void Start()
     {
@@ -14,7 +14,7 @@ public class PlayerSpawnAudio : MonoBehaviour
 
     IEnumerator PlaySpawnSound()
     {
-        yield return null; // tunggu 1 frame
+        yield return null; 
         if (spawnClip != null)
         {
             AudioSource.PlayClipAtPoint(spawnClip, transform.position, volume);

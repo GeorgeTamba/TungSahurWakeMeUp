@@ -25,13 +25,11 @@ public class Collectible : MonoBehaviour
         {
             GameManager.instance.AddItem(itemName, itemValue);
 
-            // Langsung sembunyikan dan nonaktifkan collider
             if (spriteRenderer != null)
                 spriteRenderer.enabled = false;
             if (col != null)
                 col.enabled = false;
 
-            // Mainkan suara
             if (collectSound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(collectSound);

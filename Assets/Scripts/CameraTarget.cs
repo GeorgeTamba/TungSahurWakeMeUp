@@ -9,7 +9,7 @@ public class CameraTarget : MonoBehaviour
         if (player != null)
         {
             transform.position = player.position;
-            transform.rotation = Quaternion.identity; // Jaga rotasi tetap netral
+            transform.rotation = Quaternion.identity; 
         }
     }
 }

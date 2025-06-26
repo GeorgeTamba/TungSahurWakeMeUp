@@ -3,9 +3,9 @@ using System.Collections;
 
 public class ArrowBlink : MonoBehaviour
 {
-    public Sprite terangSprite;  // Gambar nyala
-    public Sprite gelapSprite;   // Gambar mati
-    public float blinkInterval = 0.5f; // Detik antara kedipan
+    public Sprite terangSprite;  // Arrow On
+    public Sprite gelapSprite;   // Arrow Off
+    public float blinkInterval = 0.5f; // Blink Interval
 
     private SpriteRenderer spriteRenderer;
 

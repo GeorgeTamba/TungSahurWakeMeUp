@@ -4,7 +4,7 @@ using UnityEngine;
 public class StompDetector : MonoBehaviour
 {
     public float bounceForce = 12f;
-    public AudioClip stompSound; //  Tambahkan ini
+    public AudioClip stompSound; 
     private AudioSource audioSource;
 
     void Start()
@@ -12,10 +12,9 @@ public class StompDetector : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
-            // Tambahkan AudioSource jika belum ada
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
-            audioSource.spatialBlend = 0f; // 2D sound
+            audioSource.spatialBlend = 0f; 
         }
     }
 
@@ -23,20 +22,17 @@ public class StompDetector : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            // Hancurkan musuh
             EnemyDeath deathScript = other.GetComponent<EnemyDeath>();
             if (deathScript != null)
             {
                 deathScript.Die();
             }
 
-            // Mainkan suara stomp
             if (stompSound != null)
             {
                 audioSource.PlayOneShot(stompSound);
             }
 
-            // Bounce player
             Rigidbody2D playerRb = GetComponentInParent<Rigidbody2D>();
             playerRb.velocity = new Vector2(playerRb.velocity.x, bounceForce);
         }
