@@ -72,4 +72,16 @@ public class PauseMenu : MonoBehaviour
         AudioListener.pause = false;
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void ExitGame()
+    {
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }
